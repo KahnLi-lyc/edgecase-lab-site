@@ -8,8 +8,10 @@
   <title>EdgeCase Lab — Offline QA toolkit</title>
   <link rel="icon" href="assets/app-icon.png">
   <link rel="stylesheet" href="styles.css">
+  <script src="site.js" defer></script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="./" aria-current="page"><img src="assets/app-icon.png" alt=""><span>EdgeCase Lab</span></a>
@@ -20,57 +22,63 @@
       </nav>
     </div>
   </header>
-  <main>
+  <main id="main-content">
     <section class="hero">
       <div class="hero-inner">
         <div class="hero-copy">
-          <img class="product-mark" src="assets/app-icon.png" alt="EdgeCase Lab app icon">
-          <h1>EdgeCase Lab</h1>
-          <p class="hero-lead">An offline toolkit for test engineers. Generate boundary data, stress layouts, inspect JSON, and convert timestamps without sending your work anywhere.</p>
-          <ul class="quiet-proof" aria-label="Product qualities"><li>Works offline</li><li>No account</li><li>No analytics</li></ul>
+          <img class="product-mark" src="assets/app-icon.png" alt="EdgeCase Lab app icon" data-reveal>
+          <h1 data-reveal>EdgeCase Lab</h1>
+          <p class="hero-lead" data-reveal>An offline toolkit for test engineers. Generate boundary data, stress layouts, inspect JSON, and convert timestamps without sending your work anywhere.</p>
+          <a class="primary-link hero-action" href="#workflows" data-reveal>See workflows</a>
+          <ul class="quiet-proof" aria-label="Product qualities" data-reveal><li>Works offline</li><li>No account</li><li>No analytics</li></ul>
         </div>
-        <figure class="hero-device">
+        <figure class="hero-device" data-reveal>
           <img src="assets/screenshots/generate-home.webp" width="640" height="1392" alt="EdgeCase Lab Generate workspace showing offline test data tools" fetchpriority="high" decoding="async">
           <figcaption>Generate useful test data in seconds.</figcaption>
         </figure>
       </div>
     </section>
-    <section class="content-band showcase-band" aria-labelledby="showcase-heading">
+    <section class="content-band workflow-band" id="workflows" aria-labelledby="workflow-heading">
       <div class="content-inner">
-        <div class="section-heading"><h2 id="showcase-heading">See EdgeCase Lab in action</h2><p>Real workflows from the iPhone app, designed for checks that are difficult to reproduce by hand.</p></div>
-        <div class="showcase-rail">
-          <figure class="screenshot-item">
-            <img src="assets/screenshots/break-unicode.webp" width="640" height="1392" alt="Break workspace revealing zero-width and joined Unicode characters" loading="lazy" decoding="async">
-            <figcaption><strong>Reveal hidden Unicode</strong><span>Compare characters, scalars, and UTF-8 bytes without changing the original text.</span></figcaption>
-          </figure>
-          <figure class="screenshot-item">
-            <img src="assets/screenshots/inspect-json.webp" width="640" height="1392" alt="JSON Inspector formatting a document while preserving a large integer" loading="lazy" decoding="async">
-            <figcaption><strong>Inspect JSON safely</strong><span>Validate and format structured data while preserving large numbers and key order.</span></figcaption>
-          </figure>
-          <figure class="screenshot-item">
-            <img src="assets/screenshots/time-converter.webp" width="640" height="1392" alt="Time Converter converting a negative Unix millisecond value" loading="lazy" decoding="async">
-            <figcaption><strong>Convert precise timestamps</strong><span>Move between Unix time, ISO 8601, UTC, and local time without guessing units.</span></figcaption>
-          </figure>
+        <div class="section-heading" data-reveal><h2 id="workflow-heading">A closer look at real workflows</h2><p>Choose a task to inspect the same focused tools available in the iPhone app.</p></div>
+        <div class="workflow-tabs" role="tablist" aria-label="Workflows" data-reveal>
+          <button id="workflow-tab-break" role="tab" type="button" aria-selected="true" aria-controls="workflow-panel-break">Break</button>
+          <button id="workflow-tab-json" role="tab" type="button" aria-selected="false" aria-controls="workflow-panel-json">JSON</button>
+          <button id="workflow-tab-time" role="tab" type="button" aria-selected="false" aria-controls="workflow-panel-time">Time</button>
+        </div>
+        <div class="workflow-panels">
+          <article class="workflow-panel" id="workflow-panel-break" role="tabpanel" aria-labelledby="workflow-tab-break" tabindex="0" data-reveal>
+            <figure><img src="assets/screenshots/break-unicode.webp" width="640" height="1392" alt="Break workspace revealing zero-width and joined Unicode characters" loading="lazy" decoding="async"></figure>
+            <div class="workflow-copy"><h3>Reveal hidden Unicode</h3><p>Compare characters, scalars, and UTF-8 bytes without changing the original text. Make invisible layout risks visible before they reach production.</p><p class="workflow-detail">Long text, emoji, right-to-left text, combining marks, whitespace, and zero-width characters stay close at hand.</p></div>
+          </article>
+          <article class="workflow-panel" id="workflow-panel-json" role="tabpanel" aria-labelledby="workflow-tab-json" tabindex="0" data-reveal>
+            <figure><img src="assets/screenshots/inspect-json.webp" width="640" height="1392" alt="JSON Inspector formatting a document while preserving a large integer" loading="lazy" decoding="async"></figure>
+            <div class="workflow-copy"><h3>Inspect JSON safely</h3><p>Validate and format structured data while preserving large numbers and key order. Catch malformed payloads without sending them to a remote service.</p><p class="workflow-detail">Readable diagnostics and local processing make production-shaped examples safer to examine.</p></div>
+          </article>
+          <article class="workflow-panel" id="workflow-panel-time" role="tabpanel" aria-labelledby="workflow-tab-time" tabindex="0" data-reveal>
+            <figure><img src="assets/screenshots/time-converter.webp" width="640" height="1392" alt="Time Converter converting a negative Unix millisecond value" loading="lazy" decoding="async"></figure>
+            <div class="workflow-copy"><h3>Convert precise timestamps</h3><p>Move between Unix time, ISO 8601, UTC, and local time without guessing units. Negative and millisecond values remain explicit.</p><p class="workflow-detail">Useful conversions stay visible together so boundary dates are easier to verify.</p></div>
+          </article>
         </div>
       </div>
     </section>
-    <section class="content-band" aria-labelledby="toolkit-heading">
+    <section class="content-band toolkit-band" aria-labelledby="toolkit-heading">
       <div class="content-inner">
-        <div class="section-heading"><h2 id="toolkit-heading">Four focused workspaces</h2><p>Built for repeatable checks during development, review, and regression testing.</p></div>
+        <div class="section-heading" data-reveal><h2 id="toolkit-heading">Four focused workspaces</h2><p>Built for repeatable checks during development, review, and regression testing.</p></div>
         <div class="feature-grid">
-          <article class="feature"><h3>Generate</h3><p>Create UUIDs, numbers, dates, fictional phone numbers, reserved email addresses, and text. Copy or export complete batches.</p></article>
-          <article class="feature"><h3>Break</h3><p>Exercise interfaces with long text, emoji, right-to-left text, combining characters, whitespace, and zero-width characters.</p></article>
-          <article class="feature"><h3>Inspect and Presets</h3><p>Validate and format JSON, convert precise timestamps, and save reusable rules locally without storing generated values.</p></article>
+          <article class="feature feature-generate"><figure data-ui data-reveal><img src="assets/screenshots/generate-home.webp" width="640" height="1392" alt="Generate workspace with local test data tools" loading="lazy" decoding="async"></figure><div class="feature-copy" data-reveal><h3>Generate</h3><p>Create UUIDs, numbers, dates, fictional phone numbers, reserved email addresses, and text. Copy or export complete batches.</p></div></article>
+          <article class="feature feature-break"><figure data-ui data-reveal><img src="assets/screenshots/break-unicode.webp" width="640" height="1392" alt="Break workspace with Unicode inspection tools" loading="lazy" decoding="async"></figure><div class="feature-copy" data-reveal><h3>Break</h3><p>Exercise interfaces with long text, emoji, right-to-left text, combining characters, whitespace, and zero-width characters.</p></div></article>
+          <article class="feature feature-inspect"><figure data-ui data-reveal><img src="assets/screenshots/inspect-json.webp" width="640" height="1392" alt="Inspect workspace formatting a JSON document" loading="lazy" decoding="async"></figure><div class="feature-copy" data-reveal><h3>Inspect and Presets</h3><p>Validate and format JSON, convert precise timestamps, and save reusable rules locally without storing generated values.</p></div></article>
         </div>
       </div>
     </section>
-    <section class="content-band" aria-labelledby="privacy-heading">
+    <section class="content-band privacy-band" aria-labelledby="privacy-heading">
       <div class="content-inner">
-        <div class="section-heading"><h2 id="privacy-heading">Private by design</h2><p>EdgeCase Lab has no sign-in, advertising, analytics, tracking, or cloud service. Inputs and generated content stay on your device unless you choose to copy or share them.</p></div>
-        <div class="link-row"><a class="primary-link" href="privacy/">Read the privacy policy</a><a href="support/">Get support</a></div>
+        <div class="privacy-statement" data-reveal><h2 id="privacy-heading">Private by design</h2><p>EdgeCase Lab has no sign-in, advertising, analytics, tracking, or cloud service. Inputs and generated content stay on your device unless you choose to copy or share them.</p></div>
+        <div class="link-row" data-reveal><a class="primary-link" href="privacy/">Read the privacy policy</a><a href="support/">Get support</a></div>
       </div>
     </section>
   </main>
-  <footer class="site-footer"><div class="footer-inner"><p>© 2026 EdgeCase Lab</p><p><a href="privacy/">Privacy</a> · <a href="support/">Support</a></p></div></footer>
+  <footer class="site-footer"><div class="footer-inner"><p class="footer-brand">EdgeCase Lab</p><div class="footer-meta"><p>Offline QA tools for iPhone and iPad.</p><p>© 2026 EdgeCase Lab · <a href="privacy/">Privacy</a> · <a href="support/">Support</a></p></div></div></footer>
 </body>
 </html>
